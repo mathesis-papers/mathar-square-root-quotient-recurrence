@@ -5,13 +5,15 @@
 Using Mathar's inverse-root theorem (2021, Theorem 2 and Example 4) and Cigler's determinant theorem (2002 volume, Theorem 2), we give explicit proofs of Mathar's three-term conjecture in OEIS A128057, revision 11, FORMULA (2 December 2014), by coefficient pairing, and Barker's empirical Hankel generating function in OEIS A128056, revision 5, FORMULA (27 June 2013), by a block determinant, respectively. The A128057 recurrence holds for every n >= 2. A polynomial identity gives the corresponding three-term recurrence for (u+v*x)/sqrt(1+c*x^2) with arbitrary rational parameters. The same determinant argument proves Barker's quotient generating function, gives the unsigned and shifted Hankel transforms, and corrects related sign, parity and indexing statements.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24414721](https://doi.org/10.5281/zenodo.24414721)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24414720](https://doi.org/10.5281/zenodo.24414720)
 - License: CC-BY-4.0
 - Version: 2
 - Mathesis record: [mathar-square-root-quotient-recurrence](https://mathesis-omega-research.apps.chrono-ai.fun/papers/mathar-square-root-quotient-recurrence?version=2)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems. Mathesis, version 2. https://mathesis-omega-research.apps.chrono-ai.fun/papers/mathar-square-root-quotient-recurrence?version=2
+Haobo Ma, Wenlin Zhang (2026). Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems. Mathesis, version 2. https://doi.org/10.5281/zenodo.24414721
 
 ## Statement progress
 
