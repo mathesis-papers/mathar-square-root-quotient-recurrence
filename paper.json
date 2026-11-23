@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 111631,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "09e66a889a9ac2438c90fac35756373a5c8d16179ad7155a666791a060614d83",
+      "sha256": "09e66a889a9ac2438c90fac35756373a5c8d16179ad7155a666791a060614d83"
+    },
+    "source": {
+      "bytes": 21173,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "9f054b292f61a0a9ab5704757ad2f60744d9ac15dbd309e77125233777ed236b",
+      "sha256": "9f054b292f61a0a9ab5704757ad2f60744d9ac15dbd309e77125233777ed236b"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "Using Mathar's inverse-root theorem (2021, Theorem 2 and Example 4) and Cigler's determinant theorem (2002 volume, Theorem 2), we give explicit proofs of Mathar's three-term conjecture in OEIS A128057, revision 11, FORMULA (2 December 2014), by coefficient pairing, and Barker's empirical Hankel generating function in OEIS A128056, revision 5, FORMULA (27 June 2013), by a block determinant, respectively. The A128057 recurrence holds for every n >= 2. A polynomial identity gives the corresponding three-term recurrence for (u+v*x)/sqrt(1+c*x^2) with arbitrary rational parameters. The same determinant argument proves Barker's quotient generating function, gives the unsigned and shifted Hankel transforms, and corrects related sign, parity and indexing statements.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "2f8421f6b90d37b4815b887f6c60987553831b20",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/2f8421f6b90d37b4815b887f6c60987553831b20/D5/S1/Recurrence/Algebraic/MatharA128057ThreeTermRecurrence.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 111631,
+      "sha256": "09e66a889a9ac2438c90fac35756373a5c8d16179ad7155a666791a060614d83",
+      "url": "/api/v1/collected-papers/mathar-square-root-quotient-recurrence/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T16:53:07.950740600Z",
+    "record": "mathar-square-root-quotient-recurrence",
+    "repository_name": "mathar-square-root-quotient-recurrence",
+    "source": {
+      "bytes": 21173,
+      "sha256": "9f054b292f61a0a9ab5704757ad2f60744d9ac15dbd309e77125233777ed236b",
+      "url": "/api/v1/collected-papers/mathar-square-root-quotient-recurrence/files/source?version=2"
+    },
+    "title": "Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T16:53:07.950740600Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "mathar-square-root-quotient-recurrence"
+  }
+}

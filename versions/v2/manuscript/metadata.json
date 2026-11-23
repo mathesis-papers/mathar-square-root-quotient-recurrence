@@ -1,0 +1,15 @@
+{
+  "id": "mathar-square-root-quotient-recurrence",
+  "revision": 2,
+  "problem_ids": ["oeis-a128057-three-term-recurrence"],
+  "topic": "Mathar's three-term recurrence, its rational square-root quotient extension, and Barker's Hankel generating functions",
+  "title": "Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems",
+  "creators": [
+    {"name": "Haobo Ma", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Wenlin Zhang", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "Using Mathar's inverse-root theorem (2021, Theorem 2 and Example 4) and Cigler's determinant theorem (2002 volume, Theorem 2), we give explicit proofs of Mathar's three-term conjecture in OEIS A128057, revision 11, FORMULA (2 December 2014), by coefficient pairing, and Barker's empirical Hankel generating function in OEIS A128056, revision 5, FORMULA (27 June 2013), by a block determinant, respectively. The A128057 recurrence holds for every n >= 2. A polynomial identity gives the corresponding three-term recurrence for (u+v*x)/sqrt(1+c*x^2) with arbitrary rational parameters. The same determinant argument proves Barker's quotient generating function, gives the unsigned and shifted Hankel transforms, and corrects related sign, parity and indexing statements.",
+  "summary": "Complete written proofs spell out consequences of Mathar's and Cigler's earlier theorems, a uniform rational-parameter short recurrence, transform corollaries and explicit corrections. Exact finite checks include 150 direct Hankel determinants. The pinned Lean declaration covers the normalized root, inverse and original A128057 recurrence; the parameterized theorem and Hankel consequences have written proofs and separate exact finite checks.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/2f8421f6b90d37b4815b887f6c60987553831b20/D5/S1/Recurrence/Algebraic/MatharA128057ThreeTermRecurrence.lean"
+}

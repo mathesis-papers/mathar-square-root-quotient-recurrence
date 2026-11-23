@@ -1,0 +1,632 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,array,booktabs,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems},pdfauthor={Haobo Ma; Wenlin Zhang},pdfsubject={Formal power series, recurrences and Hankel determinants}}
+\emergencystretch=2em
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\coeff}[2]{[x^{#1}]#2}
+\title{Explicit proofs of Mathar's recurrence and Barker's Hankel formulas\\from Mathar's and Cigler's theorems}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Using Mathar's inverse-root theorem (2021, Theorem~2 and Example~4) and
+Cigler's determinant theorem (2002 volume, Theorem~2), we give explicit
+proofs of Mathar's three-term conjecture in OEIS A128057, revision~11, FORMULA
+(2~December 2014), by coefficient pairing, and Barker's empirical Hankel
+generating function in OEIS A128056, revision~5, FORMULA (27~June 2013),
+by a block determinant, respectively.
+For the coefficients of $(1+x)/\sqrt{1+4x^2}$ the three-term recurrence
+holds for every $n\geq2$.
+A polynomial identity gives the corresponding three-term recurrence for
+$(u+vx)/\sqrt{1+cx^2}$ with arbitrary rational parameters.
+The same determinant argument proves Barker's quotient generating function,
+gives the unsigned and shifted Hankel transforms, and corrects related
+sign, parity and indexing statements.
+\end{abstract}
+
+\section{The source question and the family}
+Mathar's conjecture concerns the offset-zero sequence introduced by Paul
+Barry in OEIS A128057~\cite{a128057}. Its initial terms are
+$1,1,-2,-2,6,6,-20,-20,70,70$.
+We prove the conjecture for every legal lag, $n\geq2$; the source itself
+does not print an onset for the conjecture.
+All power series below are formal series over $\Q$, and each square root
+has constant coefficient one. Thus no analytic choice of branch is needed.
+
+Mathar's general construction~\cite[Theorem~2 and Example~4]{mathar}
+already treats this generating function and gives its four-term recurrence.
+His Appendix~C explains how higher-order differential equations can reduce
+the number of terms of a recurrence. The argument here makes the shorter
+relation explicit by a parity calculation, and gives its uniform parameterized
+form within Mathar's class. A direct recurrence identity below also makes
+the conjecture an immediate consequence of his earlier theorem.
+The classical central-binomial identities used in that calculation are
+supporting identities, rather than separate novelty claims.
+The paired coefficients also split the Hankel matrices into two moment
+matrices. Their orthogonal Laurent-polynomial representation evaluates the
+determinants and proves the empirical formulas of Barker~\cite{a128056,a128053}.
+The determinant evaluation is a specialization of Cigler's Theorem~2
+in the 2002 volume~\cite{cigler2002}, pp.~149--150, with weights
+$(2,1,1,\ldots)$ and $z=1$; it is also covered by his later theorem
+on polynomial moment combinations~\cite[Theorem~2, equations~(43)--(44)]{cigler2012}.
+Callan's Theorem~1(i)~\cite{callan} supplies the general quadratic-root
+coefficient formula, and Noe's equations~(2)--(4)~\cite{noe} supply the
+coefficient and recurrence ingredients for the binomial-transform corollaries.
+The earlier sources provide the general theorems; the recurrence combination
+and parity-block specializations are displayed below.
+
+\begin{theorem}\label{thm:family}
+Let $u,v,c\in\Q$, let $S\in\Q[[x]]$ be the unique series satisfying
+$S(0)=1$ and $S^2=1+cx^2$, and put
+\[
+ A(x)=(u+vx)S^{-1}=\sum_{n\geq0}a_nx^n,
+ \qquad H=cu^2+v^2.
+\]
+Then, for $m\geq0$,
+\begin{equation}\label{eq:pair}
+ a_{2m}=u b_m,\qquad a_{2m+1}=v b_m,
+ \qquad b_m=\left(-\frac c4\right)^m\binom{2m}{m}.
+\end{equation}
+For every integer $n\geq2$,
+\begin{equation}\label{eq:general}
+ n\bigl(Hn-2cu^2-v^2\bigr)a_n
+ +cuv\,a_{n-1}
+ +c(n-2)(Hn-cu^2)a_{n-2}=0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The factorial identity
+$(m+1)\binom{2m+2}{m+1}=2(2m+1)\binom{2m}{m}$ gives
+\begin{equation}\label{eq:adjacent}
+ 2(m+1)b_{m+1}+c(2m+1)b_m=0\qquad(m\geq0).
+\end{equation}
+Set $T(z)=\sum_{m\geq0}b_mz^m$. Equation~\eqref{eq:adjacent} is
+$2(1+cz)T'(z)+cT(z)=0$. Hence
+$((1+cz)T(z)^2)'=0$, and its constant coefficient is one, so
+$(1+cz)T(z)^2=1$.
+The unit $T(x^2)^{-1}$ is therefore a normalized square root of $1+cx^2$.
+If $S_1$ and $S_2$ are two such roots, then
+$(S_1-S_2)(S_1+S_2)=0$. The second factor has constant coefficient two
+and is a unit, proving uniqueness. In particular $S^{-1}=T(x^2)$;
+multiplication by $u+vx$ proves~\eqref{eq:pair}.
+
+It remains to prove~\eqref{eq:general}. For $m\geq1$ define
+\[
+ K_m=2m b_m+c(2m-1)b_{m-1}=0,
+\]
+using~\eqref{eq:adjacent} at $m-1$.
+Substitution of~\eqref{eq:pair} into the left side of~\eqref{eq:general}
+at an even index $n=2m$ gives exactly
+\[
+ u\bigl((2m-2)cu^2+(2m-1)v^2\bigr)K_m.
+\]
+At an odd index $n=2m+1\geq3$ it gives exactly
+\[
+ v\bigl(2mcu^2+(2m+1)v^2\bigr)K_m.
+\]
+Both vanish. These two cases cover every $n\geq2$, including $n=2$.
+\end{proof}
+
+\begin{corollary}[Mathar's three-term recurrence]\label{cor:target}
+The unique normalized square root of $1+4x^2$ has a two-sided inverse
+with constant coefficient one. If
+$(1+x)/\sqrt{1+4x^2}=\sum_{n\geq0}a_nx^n$, then
+\begin{equation}\label{eq:target}
+ n(5n-9)a_n+4a_{n-1}+4(5n-4)(n-2)a_{n-2}=0\quad(n\geq2),
+\end{equation}
+and $a_{2m}=a_{2m+1}=(-1)^m\binom{2m}{m}$.
+Together with $a_0=a_1=1$, this recurrence determines the sequence uniquely.
+\end{corollary}
+\begin{proof}
+Take $(u,v,c)=(1,1,4)$ in Theorem~\ref{thm:family}, so that $H=5$.
+A unit in $\Q[[x]]$ has a unique two-sided inverse; its constant
+coefficient here is one. Finally $n(5n-9)\ne0$ for every integer $n\geq2$,
+which permits successive determination of $a_n$.
+\end{proof}
+
+\paragraph{A direct consequence of Mathar's theorem.}
+Let $R_n$ be the left side of~\eqref{eq:target} and put
+\[
+ F_n=na_n+(n-2)a_{n-1}+4(n-1)a_{n-2}+4(n-3)a_{n-3}.
+\]
+Coefficient collection, for any sequence and $n\geq3$, gives
+\begin{equation}\label{eq:bridge}
+ R_n+R_{n-1}=(5n-9)F_n.
+\end{equation}
+Mathar's Theorem~2 and Example~4~\cite{mathar} give $F_n=0$ for
+$n\geq4$; its printed bound is $n>\deg R=3$ in that theorem's notation.
+The initial coefficients give $F_3=0$ and $R_2=0$.
+Induction in~\eqref{eq:bridge} proves the conjecture for every $n\geq2$.
+Thus the direct parity proof is an alternative derivation of a consequence
+of the 2021 theorem, rather than an enlargement of its generating-function class.
+
+\section{Other formulas in the source entries}
+Differentiating $A=(u+vx)/\sqrt{1+cx^2}$ yields
+\begin{equation}\label{eq:firstorder}
+ (u+vx)(1+cx^2)A'+(cux-v)A=0.
+\end{equation}
+Indeed $\bigl(S^{-1}\bigr)'=-cxS^{-1}/(1+cx^2)$, so both terms cancel
+after substitution. Extracting $x^{n-1}$ gives, for $n\geq3$,
+\begin{equation}\label{eq:four}
+ un a_n+v(n-2)a_{n-1}+cu(n-1)a_{n-2}+cv(n-3)a_{n-3}=0.
+\end{equation}
+The specialization $(1,1,4)$ is the four-term relation recorded by
+Mathar in A128057 on 2~December 2014 and covered by his general
+method~\cite{a128057,mathar}. This is distinct from~\eqref{eq:target}.
+
+\paragraph{Unsigned sequence.}
+Let $U_n=|a_n|$ for the sequence of Corollary~\ref{cor:target}.
+Then $U_{2m}=U_{2m+1}=\binom{2m}{m}$, so
+\[
+ \sum_{n\geq0}U_nx^n=\frac{1+x}{\sqrt{1-4x^2}}.
+\]
+This proves the unsigned identification with A128014 and its
+central-binomial description~\cite{a128014,a000984}. In particular it is
+the parity formula printed in A128057: $(-1)^{\binom n2}=(-1)^m$
+for both $n=2m$ and $n=2m+1$.
+Theorem~\ref{thm:family} at $(1,1,-4)$ gives a three-term relation for
+$U_n$; equation~\eqref{eq:four} at these parameters gives the four-term
+relation recorded by Mathar in A128014 on 26~November 2012.
+
+\begin{corollary}[Further unsigned identities]\label{cor:unsigned}
+For $n\geq1$,
+\[
+ U_n=2^n\prod_{k=0}^{n-1}\left(\frac{k+1}{2n}\right)^{(-1)^k},
+ \qquad
+ \sum_{n\geq0}U_{n+1}\frac{x^n}{n!}=I_0(2x)+2I_1(2x),
+\]
+where $I_0(2x)=\sum_{m\geq0}x^{2m}/(m!)^2$ and
+$I_1(2x)=\sum_{m\geq0}x^{2m+1}/(m!(m+1)!)$.
+The integral formula in A128014 is valid as
+\[
+ U_n=\frac1\pi\operatorname{PV}\int_{-2}^2
+ \frac{t^{n-1}(1+t)}{\sqrt{4-t^2}}\,dt \qquad(n\geq0).
+\]
+Only $n=0$ requires the Cauchy principal value at zero.
+The number of binary abelian squares of length $n$ is $U_n$ for even $n$
+and zero for odd $n$.
+\end{corollary}
+\begin{proof}
+Separate the odd and even factors in the product. For $n=2m$ it gives
+$\binom{2m}{m}$, and for $n=2m+1$ it gives the same value. Comparing
+even and odd coefficients proves the exponential identity.
+The substitution $t=2\cos\theta$ shows that the arcsine moments
+are zero in odd degree and $\binom{2m}{m}$ in degree $2m$.
+At degree $-1$ the symmetric principal value is zero. This proves the
+integral statement, including $n=0$; the two one-sided integrals there
+do not converge separately.
+An abelian square consists of two equal-length words with the same number
+of each symbol. For length $2m$ its count is
+$\sum_{j=0}^m\binom mj^2=\binom{2m}{m}$ by the binomial theorem.
+There is no such word of odd length. Thus A128014's unqualified
+abelian-square identification needs the parity restriction: at $n=1$
+the count is zero whereas $U_1=1$.
+\end{proof}
+
+\paragraph{Binomial transform.}
+For $B_n=\sum_{k=0}^n\binom nk a_k$, the formal identity
+$\sum_{n\geq k}\binom nk x^n=x^k/(1-x)^{k+1}$ gives
+\begin{equation}\label{eq:binomial}
+ B(x)=\sum_{n\geq0}B_nx^n
+ =\frac1{1-x}A\!\left(\frac{x}{1-x}\right)
+ =\frac1{(1-x)\sqrt{1-2x+5x^2}}.
+\end{equation}
+Thus this is the sequence A128058~\cite{a128058}.
+Writing $D(x)=(1-2x+5x^2)^{-1/2}$ and expanding as
+\[
+ D(x)=\sum_{j\geq0}(-1)^j\binom{2j}{j}
+             \frac{x^{2j}}{(1-x)^{2j+1}}
+\]
+gives $[x^k]D=\sum_{j=0}^{\lfloor k/2\rfloor}
+(-1)^j\binom{k}{j}\binom{k-j}{j}$.
+Since $B=D/(1-x)$, this also proves A128058's double-sum formula.
+Differentiating~\eqref{eq:binomial} gives
+\[
+ (1-3x+7x^2-5x^3)B'-(2-8x+10x^2)B=0.
+\]
+Its coefficient of $x^{n-1}$ is
+\begin{equation}\label{eq:binrec}
+ nB_n+(1-3n)B_{n-1}+(7n-6)B_{n-2}+5(1-n)B_{n-3}=0
+ \quad(n\geq3),
+\end{equation}
+reproving the relation recorded by Mathar on 23~January 2020.
+It also follows directly from Noe's 2006 recurrence below by substituting
+$d_n=B_n-B_{n-1}$.
+Also $B_n$ is the partial sum of the coefficients of $D(x)$, as stated
+in A128058. Those coefficients have the two sums and the recurrence
+\[
+ d_n=\sum_{j=0}^{\lfloor n/2\rfloor}(-1)^j\binom n{2j}\binom{2j}j,
+ \quad
+ nd_n=(2n-1)d_{n-1}-5(n-1)d_{n-2}\quad(n\geq2),
+\]
+with $d_0=d_1=1$. The sum equals the preceding expression for $[x^n]D$
+term by term; the recurrence follows from
+$(1-2x+5x^2)D'=(1-5x)D$. These reprove the corresponding formulas of
+A098331, including Noe's recurrence (19~October 2005)~\cite{a098331}.
+
+\section{Hankel determinants and Barker's formulas}
+For a sequence $w$, define
+$\mathcal H_n(w)=\det(w_{i+j})_{0\leq i,j\leq n}$.
+Write $h_n=\mathcal H_n(a)$, $g_n=\mathcal H_n(U)$, and let
+$L_0=2$, $L_1=1$, $L_{j+2}=L_{j+1}+L_j$ be the Lucas numbers.
+
+\begin{lemma}\label{lem:moments}
+For $b_j=(-1)^j\binom{2j}j$, put
+$D_m=\det(b_{i+j})_{0\leq i,j<m}$ and
+$E_m=\det(b_{i+j+1}-b_{i+j})_{0\leq i,j<m}$, with empty determinants one.
+For $m\geq1$,
+\[
+ D_m=2^{m-1},\qquad E_m=(-1)^m2^{m-1}L_{2m}.
+\]
+For $b_j=\binom{2j}j$ instead, $D_m=2^{m-1}$ and
+$E_m=2^m\cos(\pi m/3)$.
+\end{lemma}
+\begin{proof}
+Let $\operatorname{CT}$ mean the coefficient of $z^0$ in a Laurent
+polynomial and set $t=-2+z+z^{-1}$. Then
+\[
+ \operatorname{CT}t^j=(-1)^j\sum_{k=0}^j\binom jk^2
+ =(-1)^j\binom{2j}j=b_j.
+\]
+Define monic polynomials $P_0=1$, $P_1(t)=t+2$,
+$P_2(t)=(t+2)^2-2$, and
+$P_m=(t+2)P_{m-1}-P_{m-2}$ for $m\geq3$.
+After substitution, $P_m(t)=z^m+z^{-m}$ for $m\geq1$.
+Consequently $\operatorname{CT}(P_iP_j)$ is zero for $i\ne j$,
+one for $i=j=0$, and two for $i=j\geq1$.
+Changing from monomials to these monic polynomials is triangular with
+diagonal one, so $D_m=2^{m-1}$.
+
+Orthogonality and monicity also give the determinant formula
+\[
+ D_m P_m(y)=\det\begin{pmatrix}
+ b_0&b_1&\cdots&b_m\\
+ b_1&b_2&\cdots&b_{m+1}\\
+ \vdots&\vdots&&\vdots\\
+ b_{m-1}&b_m&\cdots&b_{2m-1}\\
+ 1&y&\cdots&y^m
+ \end{pmatrix}.
+\]
+Indeed the right side divided by $D_m$ is monic and orthogonal to
+$1,y,\ldots,y^{m-1}$; the nonzero Gram determinant makes that polynomial
+unique. At $y=1$, replace column $j$ by column $j$ minus column $j-1$,
+from right to left. Expansion in the last row gives
+$D_mP_m(1)=(-1)^mE_m$.
+Now $P_1(1)=3$, $P_2(1)=7$, and
+$P_m(1)=3P_{m-1}(1)-P_{m-2}(1)$ for $m\geq3$.
+These are $L_{2m}$: the Lucas recurrence implies
+$L_{2m}=3L_{2m-2}-L_{2m-4}$, with $L_2=3$, $L_4=7$.
+
+For the unsigned case use $t=2+z+z^{-1}$ and replace $t+2$ by $t-2$
+in the polynomials. The same proof gives $D_m=2^{m-1}$ and
+$P_m(1)=2\cos(2\pi m/3)$, first for $m=1,2$ and then by the recurrence.
+Thus $E_m=(-1)^mD_mP_m(1)=2^m\cos(\pi m/3)$.
+\end{proof}
+
+\begin{theorem}[The Hankel formulas]\label{thm:hankel}
+We have $h_0=g_0=1$, and for $m\geq1$,
+\begin{align}
+ h_{2m-1}&=(-1)^m2^{2m-2}L_{2m},& h_{2m}&=2h_{2m-1},\label{eq:hankel}\\
+ g_{2m-1}&=2^{2m-1}\cos(\pi m/3),& g_{2m}&=2g_{2m-1}.\label{eq:unsignedh}
+\end{align}
+The Hankel transform of $B$ equals $h$. In particular Barker's
+empirical generating function in A128056 is valid:
+\begin{equation}\label{eq:barker}
+ \sum_{n\geq0}h_nx^n=
+ -\frac{(2x-1)(4x^2-x+1)}{16x^4+12x^2+1}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Simultaneously reorder the rows and columns of the Hankel matrix by
+even and odd indices; its determinant is unchanged. Since
+$a_{2j}=a_{2j+1}=b_j$, replace the
+row originally indexed $2i+1$ by that row minus row $2i$.
+Do the analogous column subtraction. The off-diagonal blocks vanish.
+For size $2m$ the diagonal blocks are
+$(b_{i+j})_{i,j<m}$ and $(b_{i+j+1}-b_{i+j})_{i,j<m}$;
+for size $2m+1$ they have sizes $m+1$ and $m$ respectively.
+Therefore
+$h_{2m-1}=D_mE_m$ and $h_{2m}=D_{m+1}E_m$.
+Lemma~\ref{lem:moments} proves~\eqref{eq:hankel}; the same operations
+with unsigned moments prove~\eqref{eq:unsignedh}.
+
+The binomial invariance used here is Layman's theorem~\cite[Theorem~1]{layman},
+whose matrix proof we include. Let $P=(\binom ij)_{0\leq i,j\leq n}$,
+with $\binom ij=0$ for $j>i$.
+Vandermonde's identity gives
+$(B_{i+j})=P(a_{i+j})P^{\mathsf T}$: the coefficient of $a_k$ on the
+right is $\sum_{r+s=k}\binom ir\binom js=\binom{i+j}k$.
+Since $\det P=1$, the Hankel transforms agree.
+Finally
+\[
+ \sum_{m\geq1}L_{2m}t^{m-1}=\frac{3-2t}{1-3t+t^2}.
+\]
+Using~\eqref{eq:hankel} at $t=-4x^2$ gives
+$1-x(1+2x)(3+8x^2)/(1+12x^2+16x^4)$, which is~\eqref{eq:barker}.
+\end{proof}
+
+\begin{corollary}[The quotient and its correction]\label{cor:quotient}
+Let $p_n=|g_n|$ and $q_n=h_n/p_n$. These are A128055 and A128053,
+respectively. Put $\delta_m=2$ if $3\mid m$ and $\delta_m=1$ otherwise.
+Then $q_0=p_0=1$, and for $m\geq1$,
+\[
+ p_{2m-1}=2^{2m-2}\delta_m,\quad p_{2m}=2^{2m-1}\delta_m,
+ \qquad q_{2m-1}=q_{2m}=\frac{(-1)^mL_{2m}}{\delta_m}.
+\]
+In particular Barker's empirical formula in A128053 is valid:
+\[
+ \sum_{n\geq0}q_nx^n=
+ -\frac{(x-1)(x^{10}-2x^9-5x^8+2x^7+9x^6+9x^4+2x^3-5x^2-2x+1)}
+ {(x^4+3x^2+1)(x^8-3x^6+8x^4-3x^2+1)}.
+\]
+The trigonometric formula in that entry needs its factor
+$(-1)^{\binom{n+1}2}$ to multiply both parity summands, not just the
+even one. With this correction it is valid for every $n\geq0$,
+using $F_{-1}=1$, $F_0=0$, $F_1=1$ for Fibonacci numbers.
+\end{corollary}
+\begin{proof}
+For integer $m$, $2|\cos(\pi m/3)|=\delta_m$; hence all the formulas
+follow from Theorem~\ref{thm:hankel}.
+For the rational generating function, put $r_m=(-1)^mL_{2m}$.
+Then $r_m=-3r_{m-1}-r_{m-2}$ and
+$r_{3j}=-18r_{3j-3}-r_{3j-6}$ at admissible indices.
+Thus the series of the paired values, including its constant term one, is
+\[
+ Q(t)=\frac{2+3t}{1+3t+t^2}-\frac{1+9t^3}{1+18t^3+t^6},
+ \qquad
+ \sum_{n\geq0}q_nx^n=1+\frac{1+x}{x}\bigl(Q(x^2)-1\bigr).
+\]
+Here $1/\delta_m=1-\tfrac12\boldsymbol1_{3\mid m}$, also for $m=0$;
+this proves the first identity, and algebraic simplification proves the
+displayed formula. For the trigonometric version,
+$L_j=F_{j-1}+F_{j+1}$ and
+$1/\delta_m=5/6-\cos(2\pi m/3)/3$.
+The common sign is $(-1)^m$ for $n=2m-1,2m$.
+At $n=1$ the formula as printed yields $+3$, whereas $q_1=-3$;
+placing the sign outside both summands is the corrected formula.
+The trigonometric formula in A128056 already has the common sign
+$\cos(\pi n/2)-\sin(\pi n/2)$ and is correct.
+\end{proof}
+
+\begin{corollary}[The interleaved triangles]
+In the named construction of A249095, interleave row $n$ of Pascal's
+triangle with row $n-1$. Thus
+\[
+ T(n,2k)=\binom nk\ (0\leq k\leq n),\qquad
+ T(n,2k+1)=\binom{n-1}k\ (0\leq k<n).
+\]
+Then $T(n,n)=U_n$, and scaling column $k$ by $2^k$, as in A249307,
+gives diagonal $2^nU_n$, namely A249308~\cite{interleaved}.
+\end{corollary}
+\begin{proof}
+Put $n=2m$ or $n=2m+1$ in the two formulas for $T$.
+In each case the diagonal is $\binom{2m}m$.
+The odd-column comment in A249095 prints $k-1$ in place of $k$;
+at $(n,k)=(1,0)$ it would give zero instead of the middle entry one.
+Each row has columns $0,\ldots,2n$, so the right edge of the scaled
+triangle is at $2n$, not $2n+1$ as two A249307 lines print.
+Its value is $2^{2n}=4^n$; the next column is outside the row.
+\end{proof}
+
+The exponents of $p_n$ are exactly A128054: writing $n=6j+s$,
+$0\leq s<6$, they are $6j+e_s$, where
+$(e_0,\ldots,e_5)=(0,0,1,2,3,5)$.
+This lists multiples of six twice and omits $6j+4$, and proves
+the exponent recurrence and generating function by summing six geometric
+series and their derivatives. Likewise
+\[
+ \sum_{n\geq0}p_nx^n=\frac{1+x+2x^2+4x^3+8x^4+32x^5}{1-64x^6},
+ \qquad \sum_{n\geq0}\frac1{p_n}=\frac{62}{21}.
+\]
+The latter follows by summing the first six reciprocals and multiplying
+by $1/(1-1/64)$. This also proves the equivalent rational generating
+function recorded in A128055~\cite{a128055,a128054}.
+The alternating reciprocal sum of A128054 (Eldar, 2023) also follows.
+If $k_n$ denotes that exponent sequence, cancellation of the two terms
+with exponent $6j$ gives
+\[
+ \sum_{n\geq2}\frac{(-1)^n}{k_n}
+ =\sum_{j\geq0}\left(\frac1{6j+1}-\frac1{6j+2}
+                  +\frac1{6j+3}-\frac1{6j+5}\right)
+ =\frac{5\pi}{12\sqrt3}-\frac{\log3}4+\frac{\log2}3.
+\]
+For the final equality, integrate the convergent geometric series on
+$0\leq t<1$ to obtain the integrand
+\[
+ \frac{1-t+t^2-t^4}{1-t^6}
+ =\frac1{3(1+t)}+\frac{1-t}{2(t^2+t+1)}
+                   +\frac{t+1}{6(t^2-t+1)}.
+\]
+The grouped summands are $O((j+1)^{-2})$, so termwise integration is
+valid. The two quadratic reciprocal integrals on $[0,1]$ are
+$\pi/(3\sqrt3)$ and $2\pi/(3\sqrt3)$, respectively; their coefficients
+are $3/4$ and $1/4$, and the logarithmic terms give the stated value.
+
+For completeness, the shifted sequence has
+\begin{equation}\label{eq:shifted}
+ \mathcal H_n\bigl((U_{j+1})_{j\geq0}\bigr)
+ =2^{n+1}\cos\!\left(\frac{\pi(n+1)}3\right),\qquad
+ \sum_{n\geq0}\mathcal H_n\bigl((U_{j+1})_{j\geq0}\bigr)x^n
+ =\frac{1-4x}{1-2x+4x^2}.
+\end{equation}
+Indeed $U_{j+1}=\operatorname{CT}(1+t)t^j$ with $t=z+z^{-1}$.
+The same determinant formula at $y=-1$ gives, for size $N=n+1$,
+$(-1)^N2^{N-1}\,2\cos(2\pi N/3)=2^N\cos(\pi N/3)$.
+This proves the A128018 identification and Choulet's formula~\cite{a128018}.
+For the original signed sequence with its first term removed, the same
+method gives the earlier explicit result of Cigler~\cite[Theorem~2.2,
+equation~(2.7)]{cigler2018}:
+\begin{equation}\label{eq:signedshift}
+ \mathcal H_n\bigl((a_{j+1})_{j\geq0}\bigr)
+ =(-1)^{\binom{n+1}2}2^nL_{n+1}.
+\end{equation}
+To see this directly, write $t=i(z+z^{-1})$, where $i^2=-1$.
+Then $a_{j+1}=\operatorname{CT}(1+t)t^j$.
+The unweighted determinant of size $N$ is
+$(-1)^{\binom N2}2^{N-1}$, and its monic orthogonal polynomial has
+value $(-1)^NL_N$ at $-1$ for $N\geq1$: its first two values are
+$-1,3$ and subsequent values satisfy $p_N=-p_{N-1}+p_{N-2}$.
+The determinant formula proves~\eqref{eq:signedshift}.
+For the unshifted sequence the Hankel values are
+$1,1,2,-4,-8,\ldots$, as recorded in A128055, not
+$1,2,2,1,1,\ldots$ as an A128017 comment states~\cite{a128017}.
+The discrepancy already occurs at $n=1$, since
+$\det\bigl(\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\bigr)=1\ne2$.
+Finally the Hankel transform of $d$, the A098331 coefficients above, is
+$2^n(-1)^{\binom{n+1}2}$: its inverse-binomial-transform moments are
+zero in odd degree and $(-1)^m\binom{2m}m$ in degree $2m$.
+Scaling $t=z+z^{-1}$ by $i$ in the preceding orthogonal-polynomial
+calculation multiplies the size-$N$ determinant by $i^{N(N-1)}$.
+Binomial invariance then proves the formula.
+
+\section{Coverage and verification}
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.35\textwidth}>{\raggedright\arraybackslash}p{0.61\textwidth}@{}}
+\toprule
+Source item & Coverage \\
+\midrule
+\endhead
+A128057 three-term conjecture & Explicit consequence of Mathar, 2021: equation~\eqref{eq:bridge}; alternative parity proof, Corollary~\ref{cor:target}, every $n\geq2$. \\
+Rational parameter family (not posed in the source) & Not posed; proved in Theorem~\ref{thm:family}, for every $u,v,c\in\Q$, including zero and degenerate parameters. \\
+A128057 coefficient and transform comments & Reproved coefficient formula; prior general proof Callan, 2007, Theorem~1(i). Unsigned, binomial and Hankel consequences are explicit. \\
+A128057 four-term relation & Reproved; prior relation Mathar, 2014; general proof Mathar, 2021, Theorem~2. \\
+A128014 unsigned identification and four-term relation & Proved identification; reproved relation of Mathar, 2012. \\
+A128014 product and shifted exponential formula & Proved: Corollary~\ref{cor:unsigned}; formulas recorded by Luschny, 2013, and Barry, 2010. \\
+A128014 moment integral & Proved with Cauchy principal value at $n=0$; ordinary integral for $n\geq1$. \\
+A128014 diagonal identifications with A249095 and A249308 & Proved for the named interleaving and column scaling. \\
+A249095 odd-column index and A249307 row endpoint & Refuted-and-corrected: the interleaved-triangle corollary specifies the corrected indices and endpoint. \\
+A128014 abelian-square comment & Refuted-and-corrected: parity restriction; counterexample $n=1$, Corollary~\ref{cor:unsigned}. \\
+A128058 binomial transform and double sum & Proved: equation~\eqref{eq:binomial} and its expansion. \\
+A128058 four-term relation & Consequence of Noe, 2006, equation~(4), by partial sums; later statement Mathar, 2020; equation~\eqref{eq:binrec}. \\
+A128058 partial-sum and Hankel comments & Proved partial-sum identity; reproved binomial invariance, prior proof Layman, 2001, Theorem~1. \\
+A128056 empirical generating function (Barker, 2013) & Explicit consequence of Cigler, 2002 volume, Theorem~2; later general proof Cigler, 2012, Theorem~2; block specialization in Theorem~\ref{thm:hankel}. \\
+A128056 factorization and trigonometric formula & Proved: Theorem~\ref{thm:hankel}, Corollary~\ref{cor:quotient}; Fibonacci convention $F_{-1}=1$. \\
+A128053 empirical generating function (Barker, 2013) & Proved: Corollary~\ref{cor:quotient}. \\
+A128053 printed sign placement & Refuted-and-corrected: $q_1=-3$, not $+3$; common sign multiplies both summands. \\
+A128055 signed-Hankel comment, generating function and reciprocal sum & Proved: equation~\eqref{eq:unsignedh} and six-residue formulas; prior statements Barry, 2008; Voznyy, 2009; Eldar, 2023. \\
+A128054 listing, recurrence, generating function and reciprocal sum & Proved by six residue classes and the displayed integral; the printed trigonometric expression agrees in each class. \\
+A128018 shifted-Hankel comment and cosine formula & Proved: equation~\eqref{eq:shifted}; prior statements Barry, 2009, and Choulet, 2008. \\
+Shifted signed coefficients of A128057 & Reproved; prior explicit proof Cigler, 2018, Theorem~2.2(2.7); equation~\eqref{eq:signedshift}. \\
+A128017 identification with the Hankel transform of A128014 & Refuted-and-corrected: $g_1=1$, not $2$; correct transform is~\eqref{eq:unsignedh}. \\
+A098331 binomial, sum, recurrence and Hankel formulas & Reproved; prior recurrence Noe, 2005; Hankel statement Barry, 2009. \\
+Other necklace/ballot interpretations in A128014 & Not covered. \\
+Further identities of A098331, A128017 and A128018 & Not covered; no open-problem status is inferred. \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+The declaration \texttt{result} in the
+\href{https://github.com/the-omega-institute/trureturing/blob/2f8421f6b90d37b4815b887f6c60987553831b20/D5/S1/Recurrence/Algebraic/MatharA128057ThreeTermRecurrence.lean}{pinned \texttt{.lean} source}
+states existence and uniqueness of the normalized square root of $1+4x^2$,
+the normalized two-sided inverse, and equation~\eqref{eq:target} for every
+natural $n\geq2$. The parameterized theorem and transform consequences
+and Hankel results are proved in writing above. The supplied
+\texttt{verify.py} gives exact symbolic and rational finite checks of
+the recurrence, coefficient, transform and determinant identities;
+its JSON output specifies the bounds. The finite checks complement
+the universal proofs.
+
+\begin{thebibliography}{99}
+\bibitem{a128057}
+P.~Barry and R.~J.~Mathar, contributions to OEIS A128057,
+\emph{Expansion of $(1+x)/\sqrt{1+4x^2}$}, revision~11,
+3~September 2021; recurrence conjecture dated 2~December 2014.
+\url{https://oeis.org/A128057/internal}.
+\bibitem{mathar}
+R.~J.~Mathar, \emph{P-finite Recurrences From Generating Functions with
+Roots of Polynomials}, arXiv:2109.02112v1 (2021),
+Theorem~2, Example~4, and Appendix~C.
+\url{https://arxiv.org/abs/2109.02112v1}.
+\bibitem{layman}
+J.~W.~Layman, \emph{The Hankel Transform and Some of its Properties},
+Journal of Integer Sequences \textbf{4} (2001), Article 01.1.5,
+Theorem~1, pp.~3--4; published 8~June 2001.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL4/LAYMAN/hankel.pdf}.
+\bibitem{cigler2002}
+J.~Cigler, \emph{Some Relations Between Generalized Fibonacci and Catalan
+Numbers}, Sitzungsberichte, Abteilung II \textbf{211} (2002 volume),
+143--154, Theorem~2, equations~(2.1)--(2.5), proof on p.~150.
+\url{https://homepage.univie.ac.at/johann.cigler/preprints/fib.cat.pdf}.
+\bibitem{cigler2012}
+J.~Cigler, \emph{Hankel determinants of some polynomial sequences},
+arXiv:1211.0816v1, 5~November 2012, equations~(19)--(20),
+Theorem~2, equations~(43)--(44).
+\url{https://arxiv.org/abs/1211.0816v1}.
+\bibitem{cigler2018}
+J.~Cigler, \emph{Catalan numbers, Hankel determinants and Fibonacci polynomials},
+arXiv:1801.05608v1, 17~January 2018, Theorem~2.2, equation~(2.7).
+\url{https://arxiv.org/abs/1801.05608v1}.
+\bibitem{callan}
+D.~Callan, \emph{On Generating Functions Involving the Square Root of a
+Quadratic Polynomial}, Journal of Integer Sequences \textbf{10} (2007),
+Article 07.5.2, Theorem~1(i), pp.~2--4.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL10/Callan/callan301.pdf}.
+\bibitem{noe}
+T.~D.~Noe, \emph{On the Divisibility of Generalized Central Trinomial
+Coefficients}, Journal of Integer Sequences \textbf{9} (2006),
+Article 06.2.7, equations~(2)--(4), Table~1.
+\url{https://cs.uwaterloo.ca/journals/JIS/VOL9/Noe/noe35.pdf}.
+\bibitem{a128014}
+P.~Barry et al., OEIS A128014,
+\emph{Central binomial coefficients $\binom{2k}{k}$ repeated},
+FORMULA section, including Mathar's relation dated 26~November 2012.
+\url{https://oeis.org/A128014}.
+\bibitem{a128058}
+P.~Barry and R.~J.~Mathar, contributions to OEIS A128058,
+\emph{Expansion of $1/((1-x)\sqrt{1-2x+5x^2})$}, revision~7,
+FORMULA section, recurrence dated 23~January 2020.
+\url{https://oeis.org/A128058}.
+\bibitem{a128056}
+P.~Barry and C.~Barker, contributions to OEIS A128056,
+\emph{Hankel transform of A128057}, revision~5,
+empirical generating function dated 27~June 2013.
+\url{https://oeis.org/A128056}.
+\bibitem{a128053}
+P.~Barry and C.~Barker, contributions to OEIS A128053,
+\emph{Quotient of A128056 by A128055}, revision~5,
+FORMULA; empirical generating function dated 27~June 2013.
+\url{https://oeis.org/A128053}.
+\bibitem{interleaved}
+R.~Zumkeller et al., OEIS A249095 (revision~11), A249307 (revision~7)
+and A249308 (revision~4), NAME and COMMENT sections.
+\url{https://oeis.org/A249095}; \url{https://oeis.org/A249307};
+\url{https://oeis.org/A249308}.
+\bibitem{a128055}
+P.~Barry et al., OEIS A128055, \emph{Powers of two with exponents A128054},
+revision~16, COMMENT and FORMULA sections.
+\url{https://oeis.org/A128055}.
+\bibitem{a128054}
+P.~Barry et al., OEIS A128054, \emph{Nonnegative integers with repeated
+multiples of six and omitted integers congruent to four}, revision~21.
+\url{https://oeis.org/A128054}.
+\bibitem{a128017}
+P.~Barry et al., OEIS A128017, revision~12, COMMENT section.
+\url{https://oeis.org/A128017}.
+\bibitem{a128018}
+P.~Barry et al., OEIS A128018, revision~38, COMMENT and FORMULA sections;
+cosine formula of R.~Choulet, 19~November 2008.
+\url{https://oeis.org/A128018}.
+\bibitem{a098331}
+P.~Barry et al., OEIS A098331, revision~61, COMMENT and FORMULA sections;
+recurrence of T.~D.~Noe, 19~October 2005.
+\url{https://oeis.org/A098331}.
+\bibitem{a000984}
+OEIS Foundation Inc., OEIS A000984,
+\emph{Central binomial coefficients: $\binom{2n}{n}=(2n)!/(n!)^2$}.
+\url{https://oeis.org/A000984}.
+\end{thebibliography}
+\medskip
+\noindent\small Copyright \textcopyright\ 2026 Haobo Ma and Wenlin Zhang.
+This note is licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0). Source entries are cited with their contributor attributions.
+\end{document}

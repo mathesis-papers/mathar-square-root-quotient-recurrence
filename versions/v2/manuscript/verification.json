@@ -1,0 +1,131 @@
+{
+  "status": "pass",
+  "arithmetic": "exact integers and rational numbers",
+  "polynomial_identities": 8,
+  "root_inverse_degree": 128,
+  "original_recurrence_indices": {
+    "first": 2,
+    "last": 512,
+    "count": 511
+  },
+  "parameter_cases": 10,
+  "parameter_degree": 64,
+  "unsigned_degree": 64,
+  "binomial_transform_degree": 64,
+  "binomial_double_sum_degree": 64,
+  "binomial_recurrence_indices": {
+    "first": 3,
+    "last": 64
+  },
+  "primary_coefficients_0_through_128_sha256": "31a54b45d2b481821236f75c4655984255cecbf075e0a46d3c7a7e08afc0e0db",
+  "siblings": {
+    "determinant_indices": {
+      "first": 0,
+      "last": 24,
+      "count_per_sequence": 25,
+      "sequences": 6
+    },
+    "rational_generating_function_degree": 64,
+    "unsigned_product_degree": 64,
+    "interleaved_triangle_rows": {
+      "first": 0,
+      "last": 12
+    },
+    "source_prefix_matches": {
+      "A128057": {
+        "revision": 11,
+        "count": 32,
+        "source_prefix_length": 32
+      },
+      "A128014": {
+        "revision": 46,
+        "count": 34,
+        "source_prefix_length": 34
+      },
+      "A128058": {
+        "revision": 7,
+        "count": 30,
+        "source_prefix_length": 30
+      },
+      "A128056": {
+        "revision": 5,
+        "count": 24,
+        "source_prefix_length": 24
+      },
+      "A128053": {
+        "revision": 5,
+        "count": 35,
+        "source_prefix_length": 35
+      },
+      "A128054": {
+        "revision": 21,
+        "count": 65,
+        "source_prefix_length": 68
+      },
+      "A128055": {
+        "revision": 16,
+        "count": 31,
+        "source_prefix_length": 31
+      },
+      "A128018": {
+        "revision": 38,
+        "count": 33,
+        "source_prefix_length": 33
+      },
+      "A098331": {
+        "revision": 61,
+        "count": 34,
+        "source_prefix_length": 34
+      },
+      "A249095": {
+        "revision": 11,
+        "count": 81,
+        "source_prefix_length": 81
+      },
+      "A249307": {
+        "revision": 7,
+        "count": 59,
+        "source_prefix_length": 59
+      },
+      "A249308": {
+        "revision": 4,
+        "count": 27,
+        "source_prefix_length": 27
+      }
+    },
+    "counterexamples": {
+      "A128053_printed_odd_sign": {
+        "index": 1,
+        "printed_formula": 3,
+        "quotient": -3
+      },
+      "A128014_odd_abelian_squares": {
+        "length": 1,
+        "count": 0,
+        "sequence": 1
+      },
+      "A128017_unsigned_Hankel_identification": {
+        "index": 1,
+        "entry": 2,
+        "determinant": 1
+      },
+      "A249095_odd_column_index": {
+        "row": 1,
+        "column": 1,
+        "printed_formula": 0,
+        "triangle": 1
+      },
+      "A249307_right_endpoint": {
+        "row": 1,
+        "last_column": 2,
+        "printed_column": 3,
+        "right_edge": 4
+      }
+    }
+  },
+  "coverage": {
+    "polynomial_identities": "Exact symbolic factorizations in four indeterminates",
+    "coefficient_checks": "Finite complements to the written universal proofs",
+    "hankel_transform": "Written determinant proofs and exact finite checks"
+  }
+}
