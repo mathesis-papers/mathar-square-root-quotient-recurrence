@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24414720",
     "current_version": 2,
     "doi": "10.5281/zenodo.24414721",
+    "kind": "note",
     "lean_source": {
       "revision": "2f8421f6b90d37b4815b887f6c60987553831b20",
       "url": "https://github.com/the-omega-institute/trureturing/blob/2f8421f6b90d37b4815b887f6c60987553831b20/D5/S1/Recurrence/Algebraic/MatharA128057ThreeTermRecurrence.lean"
@@ -55,10 +56,12 @@
     "title": "Explicit proofs of Mathar's recurrence and Barker's Hankel formulas from Mathar's and Cigler's theorems",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T16:53:07.950740600Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "mathar-square-root-quotient-recurrence"
